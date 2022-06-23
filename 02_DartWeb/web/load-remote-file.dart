@@ -25,8 +25,11 @@ Future<void> makeRequest(Event _) async {
 }
 
 void processResponse(String jsonString) {
+  Set a = Set();
   for (final portmanteau in json.decode(jsonString) as List<dynamic>) {
-    // 试试用 SET 消除重复的元素？
+    a.add(portmanteau);
+  }
+  for (final portmanteau in a){
     wordList.children.add(LIElement()..text = portmanteau as String);
   }
 }
